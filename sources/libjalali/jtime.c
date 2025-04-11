@@ -260,6 +260,13 @@ size_t jstrftime(char* s, size_t max, const char* format, const struct jtm* jtm)
             rb++;
         } else {
             buf[0] = '\0';
+
+            int fa_len = 1;
+            while (i+1<fmt_n && format[i+1] == '0') {
+              i++;
+              fa_len = 2;
+            }
+
             switch (format[i+1]) {
                 /* The abbreviated weekday name. */
             case 'a':
